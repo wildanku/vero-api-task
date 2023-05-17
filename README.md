@@ -54,3 +54,7 @@ Add a nice phpDoc to every method you create!
 ## Bonus task:
 Add a system which generates a documentation out of your API!
 
+## API Documentation
+Please refer to this Postman URL to see all the API Docs 
+https://www.postman.com/wildan-maulana-playground/workspace/vero-test-api
+
