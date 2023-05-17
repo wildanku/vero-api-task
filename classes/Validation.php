@@ -2,15 +2,14 @@
 
 class Validation 
 {
-    public function validate($var, $name = null)
-    {
-        if ($name) {
-            return $this->$name($var);
-        }
-
-        return $var;
-    }
-
+    /**
+     * a function to validate if field is required
+     *
+     * @param mixed $value
+     * @param mixed $name
+     * @param mixed $rules
+     * @return void
+     */
     public function required(mixed $value, $name, $rules = null)
     {
         $message = null;
@@ -24,7 +23,15 @@ class Validation
         return true;
     }
 
-    public function max(mixed $value, $name, $rules = null)
+    /**
+     * a function to validate the maximum of field length
+     *
+     * @param mixed $value
+     * @param mixed $name
+     * @param mixed $rules
+     * @return void
+     */
+    public function max(mixed $value, mixed $name, mixed $rules = null)
     {   
         // validate if field is empty
         if(strlen($value) > $rules){
@@ -34,7 +41,15 @@ class Validation
         return true;
     }
 
-    public function in(mixed $value, $name, $rules = null)
+    /**
+     * a function to validate input field must in defined variables
+     *
+     * @param mixed $value
+     * @param mixed $name
+     * @param mixed $rules
+     * @return void
+     */
+    public function in(mixed $value, mixed $name, mixed $rules = null)
     {
         $mustIn = explode(',',$rules);
 
@@ -49,7 +64,15 @@ class Validation
         return true;
     }
 
-    public function dateTimeTz(mixed $value, $name, $rules = null)
+    /**
+     * a function to validate dateTimeTz format
+     *
+     * @param mixed $value
+     * @param mixed $name
+     * @param mixed $rules
+     * @return void
+     */
+    public function dateTimeTz(mixed $value, mixed $name, mixed $rules = null)
     {   
         if (!isset($value) || strlen($value) == 0) {
             return true;
@@ -72,7 +95,16 @@ class Validation
         }
     }
 
-    public function after(mixed $value, $name, $rules = null, $rulesVar = null)
+    /**
+     * a function to validate date after
+     *
+     * @param mixed $value
+     * @param mixed $name
+     * @param mixed $rules
+     * @param mixed $rulesVar
+     * @return void
+     */
+    public function after(mixed $value, mixed $name, mixed $rules = null, mixed $rulesVar = null)
     {
         if (!isset($value) || strlen($value) == 0) {
             return true;
@@ -101,7 +133,15 @@ class Validation
         return true;
     }
 
-    public function hex(mixed $value, $name, $rules = null)
+    /**
+     * a function to validate color format in HEX
+     *
+     * @param mixed $value
+     * @param mixed $name
+     * @param mixed $rules
+     * @return void
+     */
+    public function hex(mixed $value, mixed $name, mixed $rules = null)
     {
         if(!isset($value) || strlen($value) == 0) {
             return true;
