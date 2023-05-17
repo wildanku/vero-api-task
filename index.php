@@ -15,7 +15,7 @@ class Api
 	public function __construct()
 	{
 		self::$db = (new Database())->init();
-		$uri = strtolower(trim((string)$_SERVER['PATH_INFO'], '/'));
+		$uri = isset($_SERVER['PATH_INFO']) ? strtolower(trim((string)$_SERVER['PATH_INFO'], '/')) : null;
 		$httpVerb = isset($_SERVER['REQUEST_METHOD']) ? strtolower($_SERVER['REQUEST_METHOD']) : 'cli';
 
 		$wildcards = [
@@ -70,6 +70,22 @@ class Api
 			}
 
 			echo json_encode($response, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+		} else {
+			return $this->home();
 		}
+	}
+
+	public function home()
+	{
+		echo "
+			<html>
+				<head>
+					<title>Vero Test API</title>
+				</head>
+				<body>
+					<code>Welcome to Vero Test API</code>
+				</body>
+			</html>
+		";
 	}
 }
