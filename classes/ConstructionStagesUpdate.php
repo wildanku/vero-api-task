@@ -1,8 +1,9 @@
 <?php
 
-class ConstructionStagesCreate
+class ConstructionStagesUpdate
 {
-	public $validationService;
+    public $validationService;
+
 	public $name;
 	public $startDate;
 	public $endDate;
@@ -14,23 +15,28 @@ class ConstructionStagesCreate
 
 	public function __construct($data) {
 
-		$this->validationService = new Validation();
+        $this->validationService = new Validation();
 
 		if(is_object($data)) {
 
 			$vars = get_object_vars($this);
-
+            $errors = [];
 			foreach ($vars as $name => $value) {
 
 				if (isset($data->$name)) {
-
 					$this->$name = $data->$name;
 				}
 			}
+
+            if (count($errors) > 0) {
+                
+                return $errors;
+            }
 		}
+        
 	}
 
-	public function validate(Array $forms)
+    public function validate(Array $forms)
     {
         $errors = [];
         foreach ($forms as $name => $form) {
