@@ -15,7 +15,7 @@ class Validation
         $message = null;
 
         // validate if field is empty
-        if(!isset($value)){
+        if(!isset($value) || strlen($value) == 0){
             $message = $name.' field cannot be empty!';
             return $message;
         }
